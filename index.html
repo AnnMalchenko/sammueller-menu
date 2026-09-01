@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6ec">
+  <title>Berghotel Sammüller — Speisekarte</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap');
+    :root { --bg:#faf6ec; --soft:#f1e9d5; --olive:#6f7d38; --olive-deep:#525c29; --text:#33301f; --muted:#746c53; --line:rgba(51,48,31,.14); }
+    * { box-sizing:border-box; }
+    html, body { min-width:320px; min-height:100%; margin:0; background:var(--bg); }
+    body { color:var(--text); font-family:Karla,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+    .wrap { position:relative; width:min(100%,471px); min-height:1013px; height:1013px; margin:0 auto; padding:0; }
+    .header { position:absolute; top:122.56px; left:calc(50% - 207.5px); width:421px; height:146px; max-width:calc(100% - 28px); margin:0; }
+    .logo { position:absolute; top:-8px; left:63px; width:194px; height:146px; object-fit:contain; }
+    .header > div { position:absolute; top:43px; left:188px; width:147px; height:59px; margin:0; z-index:1; }
+    .eyebrow, .section-label { margin:0; color:var(--olive); font-size:10.2px; font-weight:700; line-height:12px; letter-spacing:1.638px; text-transform:uppercase; }
+    h1 { font-family:Fraunces,Georgia,serif; letter-spacing:-.248px; }
+    .header .eyebrow { position:absolute; top:0; left:31px; width:85px; height:15px; display:flex; align-items:center; margin:0; font-size:13px; line-height:15px; letter-spacing:1.536px; }
+    .header h1 { position:absolute; top:15px; left:0; width:147px; height:26px; display:flex; align-items:center; margin:0; font-size:28px; font-weight:600; line-height:35px; white-space:nowrap; }
+    .tagline { position:absolute; top:41px; left:21.5px; width:104px; height:18px; display:flex; align-items:center; margin:0; color:var(--olive); font-family:Fraunces,Georgia,serif; font-size:15px; font-style:italic; line-height:18px; white-space:nowrap; }
+    .card { position:absolute; top:321.56px; left:28px; width:calc(100% - 56px); height:198px; border:1px solid rgba(111,125,56,.77); border-radius:22px; background:var(--soft); }
+    .card .eyebrow { position:absolute; top:25px; left:23px; }
+    .card h2 { position:absolute; top:44px; left:23px; margin:0; font-family:Montserrat,system-ui,sans-serif; font-size:27.2px; font-weight:700; line-height:33px; letter-spacing:-.272px; }
+    .desc { position:absolute; top:84px; left:23px; margin:0; color:var(--muted); font-family:Montserrat,system-ui,sans-serif; font-size:13.8px; line-height:17px; }
+    .cta { position:absolute; top:123px; right:23px; left:23px; height:50px; display:flex; align-items:flex-end; justify-content:center; gap:10px; padding:15px 0 17px; border-radius:14px; background:var(--olive); color:#fbf4e9; font-family:Montserrat,system-ui,sans-serif; font-size:15.7px; font-weight:700; line-height:19px; text-decoration:none; text-transform:uppercase; transition:background-color .18s ease; }
+    .cta svg { width:17px; height:17px; }
+    .section-label { position:absolute; top:556.12px; left:28px; margin:0; color:var(--muted); font-family:Montserrat,system-ui,sans-serif; font-size:12px; line-height:15px; letter-spacing:1.69px; }
+    .rows { position:absolute; top:591.56px; left:28px; width:calc(100% - 56px); margin:0; padding:0; list-style:none; }
+    .rows a { height:71px; display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); color:inherit; text-decoration:none; }
+    .rows li:last-child a { height:70px; border-bottom:0; }
+    .icon { width:42px; height:42px; flex:none; display:grid; place-items:center; border-radius:13px; background:rgba(111,125,56,.14); color:var(--olive-deep); }
+    .icon svg { width:19px; height:19px; }
+    .row-text { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+    .row-title { font-family:Montserrat,system-ui,sans-serif; font-size:15px; font-weight:600; line-height:18px; }.row-subtitle { color:var(--muted); font-family:Montserrat,system-ui,sans-serif; font-size:12.5px; line-height:15px; }.arrow { width:15px; height:15px; color:var(--olive); }
+    .spacer { display:none; }.status { position:absolute; top:862.56px; left:22px; width:calc(100% - 44px); height:54px; display:flex; flex-direction:column; align-items:center; margin:0; color:var(--muted); font-family:Montserrat,system-ui,sans-serif; font-size:10.9px; font-weight:700; line-height:13px; letter-spacing:1.306px; text-align:center; text-transform:uppercase; }.status span { display:flex; align-items:center; justify-content:center; }.status .kitchen { font-weight:600; font-variant:all-small-caps; }
+    .links { position:absolute; top:933.56px; left:22px; width:calc(100% - 44px); height:44px; display:flex; justify-content:center; gap:12px; margin:0; }.links a { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:rgba(111,125,56,.07); color:var(--olive); }.links svg { width:15px; height:15px; }
+    @media (max-width:390px) { .header { left:14px; } .logo { left:48px; } .header > div { left:173px; transform:scale(.92); transform-origin:top left; } .card, .section-label, .rows { left:18px; width:calc(100% - 36px); } .status, .links { left:18px; width:calc(100% - 36px); } }
+    @media (max-width:360px) {
+      .wrap { min-height:960px; height:960px; }
+      .header { top:72px; left:14px; height:136px; }
+      .logo { top:-3px; left:35px; width:176px; height:132px; }
+      .header > div { top:37px; left:156px; transform:scale(.86); transform-origin:top left; }
+      .card { top:250px; height:190px; }
+      .card h2 { top:43px; font-size:clamp(20px,6.4vw,23px); line-height:28px; }
+      .desc { top:79px; font-size:12px; line-height:15px; }
+      .cta { top:119px; height:48px; padding:14px 0 15px; font-size:13.2px; line-height:17px; }
+      .section-label { top:470px; font-size:10.8px; letter-spacing:1.35px; }
+      .rows { top:501px; }
+      .rows a, .rows li:last-child a { height:68px; gap:11px; padding:13px 0; }
+      .icon { width:39px; height:39px; border-radius:12px; }.icon svg { width:18px; height:18px; }
+      .row-title { font-size:13.5px; line-height:16px; }.row-subtitle { font-size:11px; line-height:14px; }
+      .arrow { width:14px; height:14px; }
+      .status { top:765px; font-size:9.7px; letter-spacing:1.05px; }.links { top:835px; }
+    }
+    @media (max-width:330px) {
+      .header > div { left:148px; transform:scale(.81); }
+      .logo { left:29px; width:169px; }
+      .card h2 { font-size:20px; }.desc { font-size:11.5px; }
+      .row-title { font-size:13px; }.row-subtitle { font-size:10.2px; }
+    }
+    .cta:active { background:#bd5f1c; }
+    @media (hover:hover) { .cta:hover { background:#bd5f1c; } .rows a:hover .row-title { color:var(--olive-deep); } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <img class="logo" src="heart-logo.png" alt="Berghotel Sammüller">
+      <div><p class="eyebrow">Berghotel</p><h1>Sammüller</h1><p class="tagline">ein Stück Glück</p></div>
+    </header>
+    <section class="card" aria-labelledby="menu-title">
+      <p class="eyebrow">Restaurant</p><h2 id="menu-title">Unsere Speisekarte</h2><p class="desc">Gerichte, Getränke und Weinkarte</p>
+      <a class="cta" href="speisekarte.html">Speisekarte öffnen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+    <p class="section-label">Mehr als nur ein Restaurant</p>
+    <ul class="rows">
+      <li><a href="https://www.sammueller.de/" target="_blank" rel="noopener"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16.5V20"/></svg></span><span class="row-text"><span class="row-title">Unsere Tagungsräume</span><span class="row-subtitle">4 Räume für Meetings und Konferenzen</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="https://www.sammueller.de/" target="_blank" rel="noopener"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span><span class="row-text"><span class="row-title">Hotel</span><span class="row-subtitle">Zimmer und Annehmlichkeiten</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="https://www.sammueller.de/" target="_blank" rel="noopener"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c1.8 2 2.6 3.7 2.6 5.2A2.6 2.6 0 0 1 12 10.8a2.6 2.6 0 0 1-2.6-2.6C9.4 6.7 10.2 5 12 3Z"/><path d="M12 10.8V21M8 21h8M9 15.5c-1.7 0-3-1.2-3-3M15 15.5c1.7 0 3-1.2 3-3"/></svg></span><span class="row-text"><span class="row-title">Feiern &amp; Events</span><span class="row-subtitle">Hochzeiten, Geburtstage, Bankette</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul>
+    <div class="spacer"></div><p class="status"><span>Restaurant heute · 11:00 – 22:00</span><span class="kitchen">Küche bis 20:00 Uhr</span></p>
+    <nav class="links" aria-label="Social Media"><a href="https://www.instagram.com/berghotel_sammueller/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a href="https://www.sammueller.de/" target="_blank" rel="noopener" aria-label="Website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.4 3.6 5.6 3.6 9s-1.2 6.6-3.6 9c-2.4-2.4-3.6-5.6-3.6-9S9.6 5.4 12 3Z"/></svg></a></nav>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1658 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf6ec">
+<title>Speisekarte — Berghotel Sammüller</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:ital,wght@0,500;0,600;0,700&display=swap');
+
+  :root{
+    --bg:        #faf6ec;   /* Fläche */
+    --bg-soft:   #f1e9d5;
+    --card:      #f6f0e0;
+    --olive:     #6f7d38;
+    --olive-deep:#525c29;
+    --terracotta:#bd5f1c;
+    --text:      #33301f;
+    --text-soft: #746c53;
+    --hairline:  rgba(51,48,31,0.14);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+
+  body{
+    min-width: 320px;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    width: min(100%, 500px);
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ---------- Kopf ---------- */
+  header{
+    padding: 18px 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .back{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--olive-deep);
+    text-decoration: none;
+  }
+  .back svg{ width: 15px; height: 15px; stroke: var(--olive-deep); }
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .brand img{ width: 22px; height: 22px; object-fit: contain; }
+  .brand > span:first-child{
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    color: var(--olive);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .wordmark{
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text);
+  }
+
+  /* ---------- Abschlusszeichen ---------- */
+  .end-mark{
+    display: flex;
+    justify-content: center;
+    margin: 36px 0 0;
+  }
+  .end-mark img{
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    opacity: 0.55;
+  }
+  .end-mark > span{
+    color: var(--olive);
+    font-size: 2rem;
+    line-height: 1;
+    opacity: .55;
+  }
+
+  /* ---------- Infozeile ---------- */
+  .infolinks{
+    display: flex;
+    gap: 10px;
+    margin: 0 0 4px;
+  }
+  .infolinks .infolink{ flex: 1; justify-content: center; }
+  .infolink{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    text-decoration: none;
+  }
+  .infolink svg{ width: 13px; height: 13px; stroke: var(--text-soft); }
+
+  /* ---------- Tabs ---------- */
+  .tabs{
+    display: flex;
+    gap: 10px;
+    margin: 6px 0 16px;
+  }
+  .tab{
+    flex: 1;
+    text-align: center;
+    padding: 13px 0;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.0825em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--text-soft);
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .tab.is-active{
+    background: var(--olive);
+    color: #fbf9f0;
+    border-color: transparent;
+    box-shadow: 0 8px 18px -8px rgba(82,92,41,0.5);
+  }
+
+  /* ---------- Sprung-Chips ---------- */
+  .subnav{
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 2px 6px;
+    margin-bottom: 22px;
+    scrollbar-width: none;
+  }
+  .subnav::-webkit-scrollbar{ display:none; }
+  .chip{
+    flex: 0 0 auto;
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    background: transparent;
+    color: var(--text-soft);
+    border: 1px solid var(--hairline);
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .chip.is-active{
+    background: var(--bg-soft);
+    color: var(--olive-deep);
+    border: 1px solid rgba(111,125,56,0.35);
+  }
+
+  /* ---------- Abschnitt ---------- */
+  section{ scroll-margin-top: 14px; }
+
+  .section-eyebrow{
+    margin: 0 0 2px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+  h2{
+    margin: 0 0 4px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.5625rem;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+  .section-intro{
+    margin: 0 0 28px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.02rem;
+    color: var(--terracotta);
+  }
+
+  /* ---------- Gerichtsgruppen ---------- */
+  .dish-group{ margin-bottom: 32px; }
+  .group-head{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 10px;
+  }
+  .group-title{
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.18rem;
+    color: var(--text);
+  }
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+  .badge-season{ background: rgba(189,95,28,0.13); color: var(--terracotta); }
+  .badge-favorite{ background: rgba(111,125,56,0.15); color: var(--olive-deep); }
+
+  .dishes{ list-style: none; margin: 0; padding: 0; }
+  .dish{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .dish > div:first-child,
+  .wine > div:first-child{ min-width: 0; }
+  .dish:last-child{ border-bottom: none; }
+  .dish-name{
+    font-weight: 700;
+    font-size: 0.96rem;
+  }
+  .dish-desc{
+    margin-top: 3px;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    line-height: 1.4;
+  }
+  .dish-price{
+    flex: 0 0 auto;
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 1px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--olive-deep);
+    font-size: 0.94rem;
+  }
+  .dish-price > div{
+    font: inherit;
+  }
+  .dish-price-alt{
+    margin-top: 3px;
+    font-size: 0.78rem;
+  }
+  .dish-price-alt .vol{
+    font-weight: 400;
+    color: var(--text-soft);
+    font-size: 0.72rem;
+    margin-right: 5px;
+  }
+
+
+
+  /* ---------- Veg/Vegan-Badge ---------- */
+  .badge-veg{
+    background: rgba(111,125,56,0.15);
+    color: var(--olive-deep);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Hinweistext ---------- */
+  .note{
+    margin: 0 0 22px;
+    font-size: 0.86rem;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+  .section-note{
+    margin: 28px 0 4px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .dish-group .section-note:first-child,
+  section > .section-note:first-of-type{ margin-top: 0; }
+  .footnote-legend{
+    margin: 14px 0 0;
+    font-size: 0.7rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  /* ---------- Dunkle Akzent-Karte (Steaks) ---------- */
+  .dish-group.dark{
+    background: var(--text);
+    border-radius: 22px;
+    padding: 26px 22px 8px;
+    margin-bottom: 32px;
+  }
+  .dish-group.dark .section-eyebrow.dark{ color: #c9d19f; margin-bottom: 2px; }
+  .dish-group.dark h2.dark{ color: var(--bg); margin-bottom: 4px; }
+  .dish-group.dark .section-intro.dark{ color: var(--terracotta); margin-bottom: 22px; }
+  .dish-group.dark .dish{ border-bottom-color: rgba(250,246,236,0.14); }
+  .dish-group.dark .dish-name{ color: var(--bg); }
+  .dish-group.dark .dish-desc{ color: rgba(250,246,236,0.62); }
+  .dish-group.dark .dish-price{ color: #d7c98f; }
+
+  /* ---------- Wein ---------- */
+  .wine-region{
+    margin: 20px 0 8px;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+  .wine-list{ list-style: none; margin: 0; padding: 0; }
+  .wine{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .wine:last-child{ border-bottom: none; }
+  .wine-name{ font-weight: 700; font-size: 0.94rem; }
+  .wine-region-tag{ font-weight: 400; color: var(--text-soft); font-size: 0.82rem; }
+  .wine-desc{
+    margin-top: 3px;
+    font-size: 0.81rem;
+    color: var(--text-soft);
+    line-height: 1.4;
+  }
+  .wine-price{
+    flex: 0 0 auto;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .wine-price div{
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.88rem;
+    color: var(--olive-deep);
+  }
+  .wine-price .vol{
+    font-weight: 400;
+    color: var(--text-soft);
+    font-size: 0.68rem;
+    margin-right: 5px;
+  }
+
+  main section[hidden]{ display: none; }
+  .subnav[hidden]{ display: none; }
+
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+  .topbar .tabs{ margin-top: 6px; }
+  .topbar .subnav{ margin-bottom: 14px; }
+
+  /* ---------- Fußzeile ---------- */
+  footer{
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--text-soft);
+  }
+  button:focus-visible, a:focus-visible{
+    outline: 3px solid rgba(189,95,28,.75);
+    outline-offset: 3px;
+  }
+  @media (max-width: 360px){
+    .wrap{ padding-inline: 16px; }
+    .tabs{ gap: 7px; }
+    .tab{ font-size: .68rem; }
+    .dish, .wine{ gap: 10px; }
+    .dish-name, .wine-name{ font-size: .9rem; }
+    .dish-desc, .wine-desc{ font-size: .78rem; }
+    .dish-price{ font-size: .86rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a class="back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Zurück
+    </a>
+    <span class="brand">
+      <img src="heart-logo.png" alt="">
+      <span class="wordmark">Sammüller</span>
+    </span>
+  </header>
+
+  <nav class="infolinks" aria-label="Über den Betrieb">
+    <a class="infolink" href="ueber-uns.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.5" fill="currentColor"/></svg>
+      Über uns
+    </a>
+    <a class="infolink" href="oeffnungszeiten.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+      Zeiten
+    </a>
+  </nav>
+
+  <div class="topbar">
+    <nav class="tabs">
+      <button type="button" class="tab is-active" data-tab="essen">Essen</button>
+      <button type="button" class="tab" data-tab="getraenke">Getränke</button>
+    </nav>
+
+    <nav class="subnav" data-tab="essen" aria-label="Abschnitte Essen">
+      <button type="button" class="chip is-active" data-target="empfehlungen">Empfehlungen</button>
+      <button type="button" class="chip" data-target="suppen">Suppen</button>
+      <button type="button" class="chip" data-target="salate-vegetarisch">Salate &amp; Vegetarisch</button>
+      <button type="button" class="chip" data-target="fisch">Fisch</button>
+      <button type="button" class="chip" data-target="steaks">Steaks</button>
+      <button type="button" class="chip" data-target="hauptgerichte">Hauptgerichte</button>
+      <button type="button" class="chip" data-target="brotzeiten">Brotzeiten</button>
+      <button type="button" class="chip" data-target="kinder">Für Kinder</button>
+      <button type="button" class="chip" data-target="desserts">Desserts</button>
+    </nav>
+
+    <nav class="subnav" data-tab="getraenke" aria-label="Abschnitte Getränke" hidden>
+      <button type="button" class="chip" data-target="kaffee-tee">Kaffee &amp; Tee</button>
+      <button type="button" class="chip" data-target="alkoholfrei">Alkoholfrei</button>
+      <button type="button" class="chip" data-target="bier">Bier</button>
+      <button type="button" class="chip" data-target="weisswein">Weißwein</button>
+      <button type="button" class="chip" data-target="rotwein">Rotwein</button>
+      <button type="button" class="chip" data-target="spirituosen">Spirituosen</button>
+      <button type="button" class="chip" data-target="sommerdrinks">Sommerdrinks</button>
+      <button type="button" class="chip" data-target="aperitifs">Aperitifs</button>
+    </nav>
+  </div>
+
+  <main>
+    <section id="empfehlungen" data-tab="essen">
+      <p class="section-eyebrow">Aktuell besonders empfohlen</p>
+      <h2>Empfehlungen</h2>
+      <p class="section-intro">Was gerade besonders gut schmeckt</p>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Endlich wieder Pfifferlinge</span>
+          <span class="badge badge-season">Saison</span>
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Wirtshaussalat "Pfifferlinge"</div>
+              <div class="dish-desc">gebratene Pfifferlinge · Wurzelbrot</div>
+            </div>
+            <div class="dish-price">19,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Tagliatelle</div>
+              <div class="dish-desc">Pfifferlinge · Gemüse</div>
+            </div>
+            <div class="dish-price">19,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Pfifferlingbraten vom Jura-Distl-Rind</div>
+              <div class="dish-desc">oberpfälzer Kartoffelkloß · Beilagensalat</div>
+            </div>
+            <div class="dish-price">24,50&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Pfifferlinge in Rahmsoße</div>
+              <div class="dish-desc">Semmelkloß</div>
+            </div>
+            <div class="dish-price">19,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Fleischküchle mit Pfifferlingsoße</div>
+              <div class="dish-desc">Kartoffelnocken · Salat</div>
+            </div>
+            <div class="dish-price">22,50&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Schmackhafter Burger</span>
+          <span class="badge badge-favorite">Hausklassiker</span>
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Alpen-Burger</div>
+              <div class="dish-desc">100% Rindfleisch · Salat · Tomate · Baconjam · Pommes</div>
+            </div>
+            <div class="dish-price">19,50&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="suppen" data-tab="essen">
+      <h2>Suppen</h2>
+      <p class="section-intro">Klassiker aus der Wirtshausküche</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Leberknödelsuppe</div>
+              <div class="dish-desc">Rinderbouillon</div>
+            </div>
+            <div class="dish-price">6,90&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Waldpilzcremesuppe</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">6,90&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="salate-vegetarisch" data-tab="essen">
+      <h2>Salate &amp; Vegetarisch</h2>
+      <p class="section-intro">Leicht, frisch und aus der Region</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Wirtshaussalat &bdquo;Glücklich&ldquo; <span class="badge badge-veg">Vegetarisch</span></div>
+              <div class="dish-desc">Gr. Salat · Hausdressing · Mozzarella · Wurzelbrot</div>
+            </div>
+            <div class="dish-price">17,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Wirtshaussalat &bdquo;Power&ldquo;</div>
+              <div class="dish-desc">Gr. Salat · Hausdressing · Putenmedaillons · Wurzelbrot</div>
+            </div>
+            <div class="dish-price">18,20&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Kaspressknödel <span class="badge badge-veg">Vegetarisch</span></div>
+              <div class="dish-desc">Gemüse · feine Soße · Bergkäse</div>
+            </div>
+            <div class="dish-price">17,80&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Kartoffelwolke <span class="badge badge-veg">Vegetarisch</span></div>
+              <div class="dish-desc">Kartoffelfrischkäse-Nocken, Gemüse · Kräutersoße · Parmesanflocken</div>
+            </div>
+            <div class="dish-price"><div>17,80&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>15,80&nbsp;€</div></div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Linsenchilli <span class="badge badge-veg">Vegan</span></div>
+              <div class="dish-desc">Knusperkartoffeln · pikant, oder mit vegetarischem Dip</div>
+            </div>
+            <div class="dish-price"><div>17,80&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>15,80&nbsp;€</div></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="fisch" data-tab="essen">
+      <h2>Fisch</h2>
+      <p class="section-intro">Vom Grill und aus der Pfanne</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lachsforellenfilet vom Grill</div>
+              <div class="dish-desc">Currygemüse · Jasminreis</div>
+            </div>
+            <div class="dish-price">24,80&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Backfisch vom Seelachs</div>
+              <div class="dish-desc">Kartoffelgurkensalat · Remoulade · Salatgarnitur</div>
+            </div>
+            <div class="dish-price">19,80&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="steaks" data-tab="essen">
+      <div class="dish-group dark">
+        <p class="section-eyebrow dark">Sammüller&rsquo;s Steakgenuss</p>
+        <h2 class="dark">Steaks</h2>
+        <p class="section-intro dark">Vom Grill, mit Genuss zelebriert</p>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Zarter Zwiebelrostbraten vom Roastbeef</div>
+              <div class="dish-desc">Grillkartoffeln · Röstzwiebeln · Jus</div>
+            </div>
+            <div class="dish-price">34,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Saftiges Roastbeef vom Grill</div>
+              <div class="dish-desc">Grillkartoffeln · Kräuterdip · Kräuterbutter</div>
+            </div>
+            <div class="dish-price">34,00&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="hauptgerichte" data-tab="essen">
+      <h2>Hauptgerichte</h2>
+      <p class="section-intro">Aus der Pfanne und vom Grill</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Sauerbraten vom Jungrind aus der Region</div>
+              <div class="dish-desc">Kartoffelkloß · Preiselbeeren</div>
+            </div>
+            <div class="dish-price"><div>19,90&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>17,90&nbsp;€</div></div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Schnitzel &bdquo;Wiener Art&ldquo;</div>
+              <div class="dish-desc">Kartoffelgurkensalat · Salat · Preiselbeeren</div>
+            </div>
+            <div class="dish-price"><div>18,80&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>16,80&nbsp;€</div></div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Schweinebraten aus der Röhre von regionalen Bauern</div>
+              <div class="dish-desc">Kartoffelkloß · Salat</div>
+            </div>
+            <div class="dish-price"><div>17,80&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>15,80&nbsp;€</div></div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Putenmedaillons vom Grill</div>
+              <div class="dish-desc">Herzoginkartoffeln · Gemüse · Rahmsoße</div>
+            </div>
+            <div class="dish-price">19,80&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hausgemachte Goldbratwürste</div>
+              <div class="dish-desc">Kraut oder Kartoffelgurkensalat · Brot · Senf · Meerrettich</div>
+            </div>
+            <div class="dish-price">12,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Große Neumarkter Currywurst</div>
+              <div class="dish-desc">Würzige Soße · Knusper-Pommes</div>
+            </div>
+            <div class="dish-price">12,50&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="brotzeiten" data-tab="essen">
+      <h2>Brotzeiten</h2>
+      <p class="section-intro">Deftig und herzhaft</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Schweizer Wurstsalat</div>
+              <div class="dish-desc">Metzger-Hausmacher · Zwiebeln · Käse · Essig-Sud · Brot</div>
+            </div>
+            <div class="dish-price">12,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Obazda</div>
+              <div class="dish-desc">Angemachter Camembert · Bauernbrot</div>
+            </div>
+            <div class="dish-price">15,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Käsebrot mit Emmentaler</div>
+              <div class="dish-desc">Bauernbrot · Salatgarnitur</div>
+            </div>
+            <div class="dish-price">9,80&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Schinkenbrot mit Räucherschinken</div>
+              <div class="dish-desc">Bauernbrot · Salatgarnitur</div>
+            </div>
+            <div class="dish-price">9,80&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kinder" data-tab="essen">
+      <h2>Für unsere Kleinsten</h2>
+      <p class="section-intro">Für die jüngsten Gäste</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Oberpfälzer Kartoffelknödel</div>
+              <div class="dish-desc">Mit Soße</div>
+            </div>
+            <div class="dish-price">5,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hausgemachte Bio-Butterspätzle</div>
+              <div class="dish-desc">Mit Soße</div>
+            </div>
+            <div class="dish-price">5,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Pommes frites</div>
+              <div class="dish-desc">Mit Ketchup und Majo</div>
+            </div>
+            <div class="dish-price">5,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Räuberteller</div>
+              <div class="dish-desc">Teller und Besteck bekommst du von uns &ndash; das Essen räuberst du dir vom Teller deiner Eltern</div>
+            </div>
+            <div class="dish-price">2,00&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="desserts" data-tab="essen">
+      <h2>Desserts</h2>
+      <p class="section-intro">Ein süßer Ausklang</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hausgemachte Apfelküchle</div>
+              <div class="dish-desc">Zimt-Zucker · Vanilleeis · Sahne</div>
+            </div>
+            <div class="dish-price"><div>9,90&nbsp;€</div><div class="dish-price-alt"><span class="vol">Kl. Portion</span>8,90&nbsp;€</div></div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Vanilleeis mit heißen Himbeeren</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">8,80&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Crème brûlée</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">5,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Nougat Parfait mit frischen Früchten</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">8,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Espresso mit Vanilleeis</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">4,90&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kaffee-tee" data-tab="getraenke" hidden>
+      <h2>Kaffee &amp; Tee</h2>
+      <p class="section-intro">Von Hand geröstet, mit Liebe gebrüht</p>
+
+      <p class="note">Genießen Sie den von Hand gerösteten Kaffee der Kaffeerösterei Parsberg von unserer Siebträger-Kaffeemaschine!</p>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Bio-Kaffeespezialitäten</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Haferl Kaffee</div>
+              <div class="dish-desc">Mit Vollmilch, oder auf Wunsch lactosefrei und vegan</div>
+            </div>
+            <div class="dish-price">4,20&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Espresso</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">3,10&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Doppelter Espresso</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">4,10&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Cappuccino, Milchkaffee, Latte Macchiato</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">4,30&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Espresso Macchiato</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">3,20&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Sonstige Heißgetränke</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Heiße Schokolade mit Vollmilch</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">4,50&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Heiße Schokolade mit Vollmilch und Sahne</div>
+              <div class="dish-desc"></div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Bio-Teespezialitäten von Sonnentor</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Pfefferminze, Kamille, Früchte Harmonie, Ingwer Sonne, Lady Green, Darjeeling, Rooibos Orange</div>
+              <div class="dish-desc">Je Tasse</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="alkoholfrei" data-tab="getraenke" hidden>
+      <h2>Alkoholfreie Getränke</h2>
+      <p class="section-intro">Erfrischend, jederzeit</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Coca-Cola<sup>1,2</sup> / Coca-Cola zero<sup>1,2,4,5</sup></div>
+              <div class="dish-desc">0,5l</div>
+            </div>
+            <div class="dish-price">4,60&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Maracujaschorle / Orangenschorle</div>
+              <div class="dish-desc">Je 0,3l</div>
+            </div>
+            <div class="dish-price">4,40&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Lammsbräu Getränke</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Now Bio-Apfelschorle</div>
+              <div class="dish-desc">Naturtrüb · je 0,5l</div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Now Bio-Johannisbeerschorle</div>
+              <div class="dish-desc">Je 0,5l</div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Now Bio-Pure Zitronenlimonade</div>
+              <div class="dish-desc">Je 0,5l</div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Now Bio-Sunny Orangenlimonade</div>
+              <div class="dish-desc">Je 0,5l</div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Now Bio-Cola Mix</div>
+              <div class="dish-desc">Je 0,5l</div>
+            </div>
+            <div class="dish-price">4,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Bio Kristall Wasser medium / still</div>
+              <div class="dish-desc">0,33l 4,20&nbsp;€ · 0,75l</div>
+            </div>
+            <div class="dish-price">6,50&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+<p class="footnote-legend">1 Koffeinhaltig · 2 mit Farbstoff · 3 Chininhaltig · 4 mit Süßungsmitteln</p>
+    </section>
+
+    <section id="bier" data-tab="getraenke" hidden>
+      <h2>Bier</h2>
+      <p class="section-intro">Frisch gezapft und in der Flasche</p>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Vom Fass</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Urstoff</div>
+              <div class="dish-desc">Goldgelb glänzend, milde Hopfennote, volles Malzaroma · 0,5l 4,50&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">3,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Pils</div>
+              <div class="dish-desc">Schonend gedarrt, sehr helles Malz · 0,4l 4,50&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">3,80&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Weiße</div>
+              <div class="dish-desc">Vollmundig und prickelnd, wunderbar erfrischend · 0,5l 4,60&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Colaweizen</div>
+              <div class="dish-desc">Lammsbräu Weiße frisch gezapft, gemischt mit Cola · 0,5l 4,70&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Russen</div>
+              <div class="dish-desc">Lammsbräu Weiße vom Fass, gemischt mit Zitronenlimo · 0,5l 4,70&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Radler</div>
+              <div class="dish-desc">Goldgelbes Urstoff vom Fass, gemischt mit Zitronenlimo · 0,5l 4,60&nbsp;€ · 0,3l</div>
+            </div>
+            <div class="dish-price">3,90&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dish-group">
+        <div class="group-head">
+          <span class="group-title">Aus der Flasche</span>
+          
+        </div>
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Edel-Pils &bdquo;Zzzisch&ldquo;</div>
+              <div class="dish-desc">Strohgelb leuchtend, rund im Nachtrunk · 0,33l</div>
+            </div>
+            <div class="dish-price">4,40&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Alkoholfrei</div>
+              <div class="dish-desc">Vollmundig, spritzig, kalorienreduziert · 0,33l</div>
+            </div>
+            <div class="dish-price">4,40&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Dunkel</div>
+              <div class="dish-desc">Kastanienbraun, weich, malzaromatisch · 0,5l</div>
+            </div>
+            <div class="dish-price">4,70&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Weiße Alkoholfrei</div>
+              <div class="dish-desc">Aromatisch malzig, geschmacksintensiv · 0,5l</div>
+            </div>
+            <div class="dish-price">4,60&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu leichte Weiße</div>
+              <div class="dish-desc">Spritzig und erfrischend, 40% weniger Alkohol · 0,5l</div>
+            </div>
+            <div class="dish-price">4,60&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lammsbräu Dunkle Weiße Alkoholfrei</div>
+              <div class="dish-desc">Vollmundig, isotonisch, kalorienreduziert · 0,5l</div>
+            </div>
+            <div class="dish-price">4,60&nbsp;€</div>
+          </li>
+          <li class="dish">
+            <div>
+              <div class="dish-name">Flötzinger Hell</div>
+              <div class="dish-desc">Bayrisches Bier, milde Hopfennote aus der Hallertau · 0,5l</div>
+            </div>
+            <div class="dish-price">4,60&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="weisswein" data-tab="getraenke" hidden>
+      <h2>Weißwein</h2>
+      <p class="section-intro">Offen und in der Flasche</p>
+
+      <p class="section-note">Offene Weißweine</p>
+        <p class="wine-region">Franken</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Sommerach*</span> Silvaner</div>
+              <div class="wine-desc">Reife Quitte, gelbe Birne und fränkische Äpfel, lebendiges Säurespiel mit körperreichem Abgang</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,40&nbsp;€</div><div><span class="vol">0,1l</span>4,60&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Gerold Spies*</span> Riesling Classic QbA</div>
+              <div class="wine-desc">Feine Balance mit zarten Andeutungen von Zitrus und Pfirsich</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,60&nbsp;€</div><div><span class="vol">0,1l</span>4,80&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Sommerach*</span> Bacchus Edition St. Valentin</div>
+              <div class="wine-desc">Erinnert an Mango und süße Papaya, erfrischend mit pfeffriger Note</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,40&nbsp;€</div><div><span class="vol">0,1l</span>4,60&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Österreich</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Veit*</span> Grüner Veltliner 2019</div>
+              <div class="wine-desc">Opulent und facettenreich mit Zwetschge, Pfirsich, Mandarine, Mango und weißem Pfeffer</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>7,30&nbsp;€</div><div><span class="vol">0,1l</span>4,80&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Italien</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">100% Chardonnay</span> Chardonnay Pays d&rsquo;Oc IGP &bdquo;Rocher&ldquo;</div>
+              <div class="wine-desc">Ausdrucksvoll, frisch, harmonisch</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,40&nbsp;€</div><div><span class="vol">0,1l</span>4,60&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name">Pecorino &bdquo;Caleo&ldquo; Terre Di Chieti IGT</div>
+              <div class="wine-desc">Hell, knackig frisch und aromatisch mit herrlicher Frucht</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,30&nbsp;€</div><div><span class="vol">0,1l</span>4,50&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name">Primitivo Rosé &bdquo;Caleo&ldquo; Puglia IGT</div>
+              <div class="wine-desc">Fruchtig, mit leichtem Duft nach Waldfrüchten</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,30&nbsp;€</div><div><span class="vol">0,1l</span>4,50&nbsp;€</div></div>
+          </li>
+        </ul>
+      <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name">Weinschorle</div>
+              <div class="wine-desc"></div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,5l</span>6,00&nbsp;€</div><div><span class="vol">0,25l</span>5,00&nbsp;€</div></div>
+          </li>
+      </ul>
+      <p class="footnote-legend">* enthalten Sulfite</p>
+
+      <p class="section-note">Weißwein in Flaschen</p>
+        <p class="wine-region">Rheingau</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name">Prinz von Hessen Riesling Classic QbA*</div>
+              <div class="wine-desc">Süffig und zugänglich, leichte Noten süßer Früchte, feines Säurespiel mit wunderbarer Balance</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>22,80&nbsp;€</div></div>
+          </li>
+        </ul>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weißburgunder, Riesling, Rivaner, Gewürztraminer</span> &bdquo;Weiß und Wild&ldquo; Hirsch Cuvée*</div>
+              <div class="wine-desc">Ausgewogen und fruchtig mit Noten von frischem Pfirsich und Quitte</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>21,80&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut G&amp;M Machmer</span> Chardonnay Edition G&amp;M Bio-Wein*</div>
+              <div class="wine-desc">Anspruchsvoll, viel Stoff und Fülle, feines Aroma nach Stachel- und Johannisbeere</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>23,80&nbsp;€</div></div>
+          </li>
+        </ul>
+      <p class="section-note">!!! Neu !!! Alkoholfreie Weine</p>
+      <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">0% Vol.</span> Uby Osmose Sauvignon Blanc</div>
+              <div class="wine-desc">Weiße Birne mit Andeutungen von Grapefruit, knackig frisch und rund</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,50&nbsp;€</div><div><span class="vol">0,1l</span>3,70&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">0% Vol.</span> Uby Osmose Rosé</div>
+              <div class="wine-desc">Cabernet Franc, Cabernet Sauvignon, Merlot, Syrah &ndash; frische Himbeeren und schwarze Johannisbeeren, voller Körper</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,60&nbsp;€</div><div><span class="vol">0,1l</span>3,80&nbsp;€</div></div>
+          </li>
+      </ul>
+      <p class="footnote-legend">* enthalten Sulfite</p>
+    </section>
+
+    <section id="rotwein" data-tab="getraenke" hidden>
+      <h2>Rotwein</h2>
+      <p class="section-intro">Offen und in der Flasche</p>
+
+      <p class="section-note">Offene Rotweine</p>
+        <p class="wine-region">Franken</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Sommerach*</span> Regent Edition St. Valentin</div>
+              <div class="wine-desc">Dunkle reife Brombeeren, rund, samtig und fruchtig</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,30&nbsp;€</div><div><span class="vol">0,1l</span>3,50&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Sommerach*</span> Domina Edition St. Valentin</div>
+              <div class="wine-desc">Zarte Tanninstruktur mit feiner Vanillenote, kräftig im Abgang</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,60&nbsp;€</div><div><span class="vol">0,1l</span>3,70&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Österreich</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Veit*</span> Zweigelt Classic</div>
+              <div class="wine-desc">Fruchtig elegant, intensiver Duft nach Kirschen, Preiselbeeren und Weichselkompott, Hauch Milchschokolade</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>7,80&nbsp;€</div><div><span class="vol">0,1l</span>4,20&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Italien</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Bottero di Cello*</span> Merlot IGT</div>
+              <div class="wine-desc">Rund und angenehm, weiche Tannine im Abgang</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,40&nbsp;€</div><div><span class="vol">0,1l</span>3,60&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Apulien · 100% Primitivo</span> Primitivo &bdquo;Caleo&ldquo; IGT</div>
+              <div class="wine-desc">Körperreich, abgerundet, vollmundig</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,40&nbsp;€</div><div><span class="vol">0,1l</span>3,60&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Apulien</span> Negroamaro &bdquo;Caleo&ldquo; IGT</div>
+              <div class="wine-desc">Intensives Rubinrot, am Gaumen reich und ausgewogen mit angenehmen Würznoten, vollmundig und harmonisch</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,2l</span>6,60&nbsp;€</div><div><span class="vol">0,1l</span>3,80&nbsp;€</div></div>
+          </li>
+        </ul>
+      <p class="footnote-legend">* enthalten Sulfite</p>
+
+      <p class="section-note">Rotwein in Flaschen</p>
+        <p class="wine-region">Rheinhessen</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut G&amp;M Machmer</span> Cabernet Sauvignon QbA Bio-Wein</div>
+              <div class="wine-desc">Im Barrique gereift, tieffarbener extraktreicher Cabernet mit attraktiver Fruchtnote und feinsten Tanninen im Finale</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>24,80&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Österreich</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Veit*</span> Zweigelt Z1</div>
+              <div class="wine-desc">Kirschen und rote Beeren mit einer Prise Kakao, kraftvoll und geschmeidig am Gaumen</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>24,20&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Spanien</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Baron de Ley</span> Rioja</div>
+              <div class="wine-desc">Dichte Frucht und deutliche Holznoten, abgerundet durch Sanftheit und Frische</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>42,50&nbsp;€</div></div>
+          </li>
+        </ul>
+        <p class="wine-region">Italien</p>
+        <ul class="wine-list">
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Vino de la Tierra de Castilla</span> &bdquo;Monterio&ldquo; Tempranillo</div>
+              <div class="wine-desc">Besonders weich und körperreich, 12 Monate im amerikanischen Eichenfass gelagert</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>21,80&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Tedeschi</span> Amarone della Valpolicella</div>
+              <div class="wine-desc">Kraftvoll, saftige dunkle Beeren, getrocknete Früchte, süße Gewürznoten, robuster voller Körper</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>69,00&nbsp;€</div></div>
+          </li>
+          <li class="wine">
+            <div>
+              <div class="wine-name"><span class="wine-region-tag">Weingut Caparzo</span> Brunello di Montalcino</div>
+              <div class="wine-desc">Waldfrüchte, reife Schwarzkirsche, würzige Anklänge, kräftiger Körper mit samtigen Tanninen</div>
+            </div>
+            <div class="wine-price"><div><span class="vol">0,75l</span>69,00&nbsp;€</div></div>
+          </li>
+        </ul>
+      <p class="footnote-legend">* enthalten Sulfite</p>
+    </section>
+
+    <section id="spirituosen" data-tab="getraenke" hidden>
+      <h2>Spirituosen</h2>
+      <p class="section-intro">Edelbrände und Klassiker · je 2cl</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Mirabellenbrand Ballenberger</div>
+              <div class="dish-desc">Franken · 42%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Prinz Willi</div>
+              <div class="dish-desc">41%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Kirschlikör Ballenberger</div>
+              <div class="dish-desc">Franken · 25%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Schlehengeist Edelbrennerei Haas</div>
+              <div class="dish-desc">Franken · 40%</div>
+            </div>
+            <div class="dish-price">4,30&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Haselnussgeist Edelbrennerei Haas</div>
+              <div class="dish-desc">Franken · 40%</div>
+            </div>
+            <div class="dish-price">5,10&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hochmoorgeist</div>
+              <div class="dish-desc">56%</div>
+            </div>
+            <div class="dish-price">4,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Ouzo 12</div>
+              <div class="dish-desc">Griechenland · 38%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Jägermeister</div>
+              <div class="dish-desc">Deutschland · 35%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Ramazzotti Amaro</div>
+              <div class="dish-desc">Italien · 30%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Baileys the Original Irish Cream</div>
+              <div class="dish-desc">Irland · 17%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Eierlikör</div>
+              <div class="dish-desc">20%</div>
+            </div>
+            <div class="dish-price">4,00&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sommerdrinks" data-tab="getraenke" hidden>
+      <h2>Sammüller&rsquo;s Sommerdrinks</h2>
+      <p class="section-intro">Erfrischung für warme Tage</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hausgemachter Eistee</div>
+              <div class="dish-desc">Grüner Tee · Pfirsich · Mineralwasser</div>
+            </div>
+            <div class="dish-price">4,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Mango-Spritz</div>
+              <div class="dish-desc">Alkoholfrei · Mangomus, alkoholfreier Prosecco, Apfelsaft, Mineralwasser, Minze</div>
+            </div>
+            <div class="dish-price">6,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Himbeer-Spritz</div>
+              <div class="dish-desc">Alkoholfrei · Himbeermus, alkoholfreier Prosecco, Apfelsaft, Mineralwasser, Minze</div>
+            </div>
+            <div class="dish-price">6,00&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="aperitifs" data-tab="getraenke" hidden>
+      <h2>Aperitifs</h2>
+      <p class="section-intro">Zum Anstoßen</p>
+
+      <div class="dish-group">
+
+        <ul class="dishes">
+          <li class="dish">
+            <div>
+              <div class="dish-name">Aperol Spritz<sup>2,3</sup></div>
+              <div class="dish-desc">Das italienische Kultgetränk mit Prosecco, Soda, Orangenscheibe und Eis</div>
+            </div>
+            <div class="dish-price">7,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Hugo</div>
+              <div class="dish-desc">Erfrischend mit Prosecco, Soda, Holunderblütensirup, Minze und Eis</div>
+            </div>
+            <div class="dish-price">7,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Lillet Berry</div>
+              <div class="dish-desc">Ein Mix aus Lillet Blanc und Schweppes Russian Wild Berry</div>
+            </div>
+            <div class="dish-price">7,00&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Sarti Spritz</div>
+              <div class="dish-desc">Fruchtig-lieblich mit Geschmack sizilianischer Blutorange, Soda, Prosecco und Eis</div>
+            </div>
+            <div class="dish-price">7,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Gin Tonic</div>
+              <div class="dish-desc">Der Klassiker unter den Longdrinks mit Gin und Tonic Water</div>
+            </div>
+            <div class="dish-price">8,50&nbsp;€</div>
+          </li>
+
+          <li class="dish">
+            <div>
+              <div class="dish-name">Glas Prosecco</div>
+              <div class="dish-desc">Valdo</div>
+            </div>
+            <div class="dish-price">4,50&nbsp;€</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="end-mark">
+    <img src="heart-logo.png" alt="">
+  </div>
+
+  <footer>
+    Informationen zu Allergenen und Zusatzstoffen entnehmen Sie bitte unserer Informationsmappe oder sprechen Sie unser Servicepersonal darauf an.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var topbar = document.querySelector('.topbar');
+  var tabs = document.querySelectorAll('.tab');
+  var subnavs = document.querySelectorAll('.subnav');
+  var allSections = document.querySelectorAll('main > section');
+  var observer = null;
+  var suppressSpy = false;
+  var suppressTimer = null;
+
+  function topbarHeight(){
+    return topbar ? topbar.offsetHeight : 0;
+  }
+
+  function setActiveChip(id){
+    document.querySelectorAll('.chip').forEach(function(c){
+      var active = c.dataset.target === id;
+      c.classList.toggle('is-active', active);
+      if (active) { c.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+    });
+  }
+
+  function activeSections(tab){
+    return Array.prototype.filter.call(allSections, function(s){ return s.dataset.tab === tab; });
+  }
+
+  function observeTab(tab){
+    if (observer) { observer.disconnect(); }
+    if (!('IntersectionObserver' in window)) { return; }
+    var offset = topbarHeight() + 8;
+    observer = new IntersectionObserver(function(entries){
+      if (suppressSpy) { return; }
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { setActiveChip(entry.target.id); }
+      });
+    }, {
+      root: null,
+      rootMargin: '-' + offset + 'px 0px -70% 0px',
+      threshold: 0
+    });
+    activeSections(tab).forEach(function(s){ observer.observe(s); });
+  }
+
+  function activateTab(tab){
+    tabs.forEach(function(t){ t.classList.toggle('is-active', t.dataset.tab === tab); });
+    subnavs.forEach(function(r){ r.hidden = (r.dataset.tab !== tab); });
+    allSections.forEach(function(s){ s.hidden = (s.dataset.tab !== tab); });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    var firstChip = document.querySelector('.subnav[data-tab="' + tab + '"] .chip');
+    if (firstChip) { setActiveChip(firstChip.dataset.target); }
+    observeTab(tab);
+  }
+
+  function scrollToSection(id){
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    suppressSpy = true;
+    setActiveChip(id);
+    var top = el.getBoundingClientRect().top + window.scrollY - topbarHeight() - 12;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    clearTimeout(suppressTimer);
+    suppressTimer = setTimeout(function(){ suppressSpy = false; }, 700);
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activateTab(t.dataset.tab); });
+  });
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click', function(){ scrollToSection(c.dataset.target); });
+  });
+
+  observeTab('essen');
+})();</script>
+</body>
+</html>
