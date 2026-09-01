@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#faf6ec">
 <title>Speisekarte — Berghotel Sammüller</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:ital,wght@0,500;0,600;0,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
 
   :root{
     --bg:        #faf6ec;   /* Fläche */
@@ -37,47 +37,56 @@
   .wrap{
     width: min(100%, 500px);
     margin: 0 auto;
-    padding: 0 20px 60px;
+    padding: 0 22px 60px;
   }
 
   /* ---------- Kopf ---------- */
   header{
-    padding: 18px 0 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    position: relative;
+    height: 53px;
+    margin-top: 40px;
   }
   .back{
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--olive-deep);
-    text-decoration: none;
-  }
-  .back svg{ width: 15px; height: 15px; stroke: var(--olive-deep); }
-  .brand{
+    position: absolute;
+    left: 0;
+    top: calc(50% - 7.5px);
     display: flex;
     align-items: center;
-    gap: 7px;
+    text-decoration: none;
   }
-  .brand img{ width: 22px; height: 22px; object-fit: contain; }
-  .brand > span:first-child{
-    width: 22px;
-    height: 22px;
-    display: grid;
-    place-items: center;
-    color: var(--olive);
-    font-size: 1.25rem;
-    line-height: 1;
+  .back svg{ width: 26px; height: 15px; stroke: var(--olive-deep); }
+  .header-link{
+    position: absolute;
+    top: calc(50% - 8.5px);
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-variant: all-small-caps;
+    color: var(--text-soft);
+    text-decoration: none;
+    white-space: nowrap;
   }
+  .header-link.times{ right: 5px; }
+  .header-link.about{ right: 66px; }
+  .brand{
+    position: absolute;
+    left: 23.36%;
+    top: 2px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand img{ width: 59px; height: 45px; object-fit: contain; }
   .wordmark{
     font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 0.875rem;
+    margin-left: -24px;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
     color: var(--text);
   }
 
@@ -123,16 +132,22 @@
   .tabs{
     display: flex;
     gap: 10px;
-    margin: 6px 0 16px;
+    height: 77px;
+    margin: 9px 0 0;
+    padding-top: 16px;
   }
   .tab{
     flex: 1;
-    text-align: center;
-    padding: 13px 0;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     border-radius: 14px;
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.0825em;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.99px;
     text-transform: uppercase;
     text-decoration: none;
     border: 1px solid var(--hairline);
@@ -155,8 +170,9 @@
     display: flex;
     gap: 8px;
     overflow-x: auto;
-    padding: 2px 2px 6px;
-    margin-bottom: 22px;
+    height: 56px;
+    padding: 18px 2px 6px;
+    margin: 20px 0 22px;
     scrollbar-width: none;
   }
   .subnav::-webkit-scrollbar{ display:none; }
@@ -180,6 +196,7 @@
     background: var(--bg-soft);
     color: var(--olive-deep);
     border: 1px solid rgba(111,125,56,0.35);
+    font-weight: 400;
   }
 
   /* ---------- Abschnitt ---------- */
@@ -210,24 +227,59 @@
     font-size: 1.02rem;
     color: var(--terracotta);
   }
-  /* Nur der erste Empfehlungs-Block: Maße aus dem aktuellen Figma-Mockup. */
+  /* Erster Empfehlungs-Block: Maße aus dem aktuellen 390w-Figma-Mockup. */
+  #empfehlungen{
+    padding: 22px 0 32px;
+    gap: 2px;
+  }
   #empfehlungen > .section-eyebrow{
-    margin-left: 2px;
-    font-size: 10.9px;
-    line-height: 13px;
-    letter-spacing: 1.741px;
+    margin: 0;
+    min-height: 28px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
   }
   #empfehlungen > h2{
-    margin-top: 4px;
-    margin-bottom: 0;
+    margin: 0;
     font-size: 24px;
     line-height: 29px;
+    font-weight: 500;
     letter-spacing: -0.304px;
   }
   #empfehlungen > .section-intro{
-    margin: 0 0 28px;
+    margin: 0;
+    min-height: 49px;
+    padding: 3px 0 28px;
     font-size: 15px;
     line-height: 18px;
+    border-bottom: 1px dashed rgba(111,125,56,0.14);
+  }
+  #empfehlungen .dish-group:first-of-type{
+    margin: 0;
+    padding-top: 26px;
+  }
+  #empfehlungen .dish-group:first-of-type .group-head{ margin-bottom: 14px; }
+  #empfehlungen .dish-group{
+    margin-bottom: 0;
+  }
+  #empfehlungen .dish{
+    min-height: 68px;
+    border-bottom: none;
+  }
+  #empfehlungen .dish-group + .dish-group{
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px dashed rgba(111,125,56,0.14);
+  }
+  #empfehlungen .group-title{
+    font-size: 18.9px;
+    line-height: 23px;
+  }
+  #empfehlungen .badge{
+    font-size: 9.6px;
+    line-height: 12px;
+    letter-spacing: .768px;
   }
 
   /* ---------- Gerichtsgruppen ---------- */
@@ -407,11 +459,11 @@
     top: 0;
     z-index: 20;
     background: var(--bg);
-    margin: 0 -20px;
-    padding: 0 20px;
+    margin: 0 -22px;
+    padding: 0 22px;
   }
-  .topbar .tabs{ margin-top: 6px; }
-  .topbar .subnav{ margin-bottom: 14px; }
+  .topbar .tabs{ margin-top: 9px; }
+  .topbar .subnav{ margin-bottom: 22px; }
 
   /* ---------- Fußzeile ---------- */
   footer{
@@ -428,8 +480,15 @@
   }
   @media (max-width: 360px){
     .wrap{ padding-inline: 16px; }
+    .topbar{ margin-inline: -16px; padding-inline: 16px; }
+    .header-link{ font-size: 12px; }
+    .header-link.times{ right: 5px; }
+    .header-link.about{ right: 62px; }
+    .brand{ left: 24%; top: 9px; height: 34px; }
+    .brand img{ width: 45px; height: 34px; }
+    .wordmark{ margin-left: -18px; font-size: 12px; }
     .tabs{ gap: 7px; }
-    .tab{ font-size: .68rem; }
+    .tab{ font-size: 12px; letter-spacing: .65px; }
     .dish, .wine{ gap: 10px; }
     .dish-name, .wine-name{ font-size: .9rem; }
     .dish-desc, .wine-desc{ font-size: .78rem; }
@@ -442,26 +501,16 @@
 <div class="wrap">
 
   <header>
-    <a class="back" href="index.html">
+    <a class="back" href="index.html" aria-label="Zurück zur Startseite">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Zurück
     </a>
-    <span class="brand">
+    <a class="header-link times" href="oeffnungszeiten.html">Zeiten</a>
+    <a class="brand" href="index.html" aria-label="Berghotel Sammüller">
       <img src="heart-logo.png" alt="">
       <span class="wordmark">Sammüller</span>
-    </span>
+    </a>
+    <a class="header-link about" href="ueber-uns.html">Über uns</a>
   </header>
-
-  <nav class="infolinks" aria-label="Über den Betrieb">
-    <a class="infolink" href="ueber-uns.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.5" fill="currentColor"/></svg>
-      Über uns
-    </a>
-    <a class="infolink" href="oeffnungszeiten.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-      Zeiten
-    </a>
-  </nav>
 
   <div class="topbar">
     <nav class="tabs">
